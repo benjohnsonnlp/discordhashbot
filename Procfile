@@ -1,1 +1,1 @@
-web: python bot.py
+release: python bot.py
