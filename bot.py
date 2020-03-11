@@ -1,4 +1,7 @@
+import os
+
 import discord
+
 
 class MyClient(discord.Client):
     async def on_ready(self):
@@ -9,7 +12,12 @@ class MyClient(discord.Client):
             await message.channel.send('https://gph.is/28LBdcE')
         print('Message from {0.author}: {0.content}'.format(message))
 
+
 client = MyClient()
-with open('token', 'r') as f:
-    token = f.read()
+
+if os.path.exists('token'):
+    with open('token', 'r') as f:
+        token = f.read()
+else:
+    token = os.environ.get("BOT_TOKEN")
 client.run(token)
